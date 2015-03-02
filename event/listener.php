@@ -16,14 +16,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-    public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\extension\manager $phpbb_extension_manager, $phpbb_root_path, $php_ext)
-    {
+	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\extension\manager $phpbb_extension_manager, $phpbb_root_path, $php_ext)
+	{
 		$this->config = $config;
-        $this->user = $user;
-        $this->phpbb_extension_manager = $phpbb_extension_manager;
+		$this->user = $user;
+		$this->phpbb_extension_manager = $phpbb_extension_manager;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
-    }
+	}
 
 	static public function getSubscribedEvents()
 	{
