@@ -1,0 +1,11 @@
+services:
+    rxu.simplephpbbfaq.listener:
+        class: rxu\simplephpbbfaq\event\listener
+        arguments:
+            - @config
+            - @user
+            - @ext.manager
+            - %core.root_path%
+            - %core.php_ext%
+        tags:
+            - { name: event.listener }

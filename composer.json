@@ -1,0 +1,28 @@
+{
+    "name": "rxu/simplephpbbfaq",
+    "type": "phpbb-extension",
+    "description": "Allows adding new phpbb-style FAQ pages.",
+    "homepage": "http://www.phpbbguru.net",
+    "version": "1.0.0",
+    "time": "2015-03-02",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "rxu",
+            "homepage": "http://www.phpbbguru.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+   "require-dev": {
+      "phpbb/epv": "dev-master"
+   },
+    "extra": {
+        "display-name": "Simple phpBB FAQ",
+         "soft-require": {
+            "phpbb/phpbb": ">=3.1.4-RC1"
+         }
+    }
+}
