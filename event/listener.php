@@ -40,15 +40,21 @@ class listener implements EventSubscriberInterface
 		$lang_file = $mode;
 
 		// If custom help file is not in the main language folder, try extension one
-		if (!$this->lang_file_exists($lang_file))
+		if (!$this->lang_file_exists($lang_file, $ext_name, true))
 		{
 			$ext_name = 'rxu/simplephpbbfaq';
-			if (!$this->lang_file_exists($lang_file, $ext_name))
+			if (!$this->lang_file_exists($lang_file, $ext_name, true))
 			{
-				// Custom help file doesn't exist neither in the main nor in the extension's language folder
+				// Custom help file doesn't exist neither in the main nor in the extension's /language/<iso> folder
 				// Reset vars below to load phpBB's default faq.php page
 				$lang_file = $ext_name = '';
 			}
+		}
+
+		// Check if the lang file containing the help page title exists
+		if ($lang_file && $this->lang_file_exists($lang_file . '_lang', $ext_name, true))
+		{
+			$this->user->add_lang($lang_file . '_lang', false, true, $ext_name);
 		}
 
 		// If custom help page title language entry doesn't exist, load phpBB's default one
@@ -60,7 +66,7 @@ class listener implements EventSubscriberInterface
 		$event['lang_file'] = $lang_file;
 	}
 
-	private function lang_file_exists($lang_file, $ext_name = '', $use_help = true)
+	private function lang_file_exists($lang_file, $ext_name = '', $use_help = false)
 	{
 		// Make sure the language name is set (if the user setup did not happen it is not set)
 		if (!$this->user->lang_name)
